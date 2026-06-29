@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bootstrap a new Mac from scratch.
-# Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/dotfiles/main/bootstrap.sh)"
+# Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
 set -e
 
 echo "==> Installing Xcode Command Line Tools..."
@@ -18,7 +18,7 @@ fi
 echo ""
 echo "==> Cloning dotfiles..."
 if [ ! -d "$HOME/dotfiles" ]; then
-  git clone https://github.com/keyjm/dotfiles.git "$HOME/dotfiles"
+  git clone https://github.com/keyjm/devsetup.git "$HOME/dotfiles"
 else
   echo "  already cloned, pulling..."
   git -C "$HOME/dotfiles" pull
