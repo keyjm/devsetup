@@ -3,6 +3,19 @@
 # Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
 set -e
 
+echo "==> Installing Rosetta 2 (Apple Silicon)..."
+if [[ $(uname -m) == "arm64" ]]; then
+  if /usr/bin/pgrep -q oahd 2>/dev/null; then
+    echo "  already installed"
+  else
+    softwareupdate --install-rosetta --agree-to-license
+    echo "  installed"
+  fi
+else
+  echo "  not needed (Intel Mac)"
+fi
+
+echo ""
 echo "==> Checking Xcode Command Line Tools..."
 if xcode-select -p &>/dev/null; then
   echo "  already installed"
