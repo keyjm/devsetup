@@ -8,6 +8,7 @@ files=(
   .zshrc
   .zprofile
   .gitconfig
+  .gitconfig-personal
   .gitignore
   .p10k.zsh
 )

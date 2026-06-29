@@ -7,6 +7,8 @@ tap "supabase/tap"
 brew "docker"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Node version manager
+brew "nvm"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
