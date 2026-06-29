@@ -4,11 +4,13 @@ Mac dev environment — dotfiles, Brewfile, and bootstrap scripts.
 
 ## Bootstrap a new Mac
 
-Run this in Terminal on a fresh machine:
+Open Terminal and run the bootstrap script — it handles everything including Xcode CLI tools:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
 ```
+
+It will open the Xcode CLI tools installer dialog and pause until you confirm it's done before continuing.
 
 This will:
 1. Install Xcode CLI tools + Homebrew

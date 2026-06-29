@@ -3,8 +3,19 @@
 # Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
 set -e
 
-echo "==> Installing Xcode Command Line Tools..."
-xcode-select --install 2>/dev/null || echo "  already installed"
+echo "==> Checking Xcode Command Line Tools..."
+if xcode-select -p &>/dev/null; then
+  echo "  already installed"
+else
+  echo "  Launching installer — a dialog will appear."
+  xcode-select --install 2>/dev/null || true
+  echo ""
+  read -rp "  Press Enter once the installation dialog has finished..."
+  if ! xcode-select -p &>/dev/null; then
+    echo "ERROR: Xcode CLI tools still not found. Please install them and re-run this script."
+    exit 1
+  fi
+fi
 
 echo ""
 echo "==> Installing Homebrew..."
