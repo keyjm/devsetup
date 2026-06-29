@@ -15,13 +15,15 @@ It will open the Xcode CLI tools installer dialog and pause until you confirm it
 This will:
 1. Install Xcode CLI tools + Homebrew
 2. Clone this repo to `~/dotfiles`
-3. Install everything in `Brewfile` (brew, cask, npm)
+3. Install everything in `Brewfile` (brew, cask, fonts, npm)
 4. Install oh-my-zsh
 5. Symlink dotfiles from `home/` into `~/`
 6. Install Python 3.11.8 via pyenv and Node v22.14.0 + v26.1.0 via nvm
 7. Install Claude Code settings (`~/.claude/settings.json`)
-8. Apply macOS system defaults (`macos.sh`)
-9. Generate SSH key and configure `~/.ssh/config` for GitHub + Home Assistant
+8. Authenticate GitHub CLI (`gh auth login`)
+9. Configure iTerm2 to load saved preferences
+10. Apply macOS system defaults (`macos.sh`)
+11. Generate SSH key and configure `~/.ssh/config` for GitHub + Home Assistant
 
 ## After bootstrap (manual steps)
 

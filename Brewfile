@@ -1,4 +1,5 @@
 tap "antoniorodr/memo"
+tap "homebrew/cask-fonts"
 tap "cardpointers/tap"
 tap "github/gh"
 tap "steipete/tap"
@@ -79,6 +80,10 @@ cask "google-chrome"
 cask "google-drive"
 # Terminal emulator
 cask "iterm2"
+# JetBrains Toolbox (manages JetBrains IDEs)
+cask "jetbrains-toolbox"
+# Nerd font required for Powerlevel10k
+cask "font-meslo-lg-nerd-font"
 # Download manager
 cask "jdownloader"
 # File archiver

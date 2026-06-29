@@ -88,6 +88,21 @@ else
 fi
 
 echo ""
+echo "==> Authenticating GitHub CLI..."
+if gh auth status &>/dev/null; then
+  echo "  already authenticated"
+else
+  gh auth login
+fi
+
+echo ""
+echo "==> Setting up iTerm2 preferences..."
+ITERM_PREFS="$HOME/dotfiles/home/iterm2"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$ITERM_PREFS"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+echo "  iTerm2 will load prefs from: $ITERM_PREFS"
+
+echo ""
 echo "==> Applying macOS defaults..."
 bash "$HOME/dotfiles/macos.sh"
 
@@ -108,4 +123,5 @@ echo "  2. Copy ~/.ssh/ha_key (HA private key) from old machine"
 echo "  3. Add SSH public key to GitHub: https://github.com/settings/ssh/new"
 echo "       pbcopy < ~/.ssh/id_ed25519.pub"
 echo "  4. Sign in to: Firefox, OrbStack"
+echo "  5. Restart iTerm2 to load saved preferences"
 echo "============================================"
