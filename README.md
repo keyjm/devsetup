@@ -16,36 +16,57 @@ This will:
 3. Install everything in `Brewfile` (brew, cask, npm)
 4. Install oh-my-zsh
 5. Symlink dotfiles from `home/` into `~/`
-6. Apply macOS system defaults (`macos.sh`)
-7. Generate an SSH key and configure `~/.ssh/config` (`ssh.sh`)
+6. Install Python 3.11.8 via pyenv and Node v22.14.0 + v26.1.0 via nvm
+7. Install Claude Code settings (`~/.claude/settings.json`)
+8. Apply macOS system defaults (`macos.sh`)
+9. Generate SSH key and configure `~/.ssh/config` for GitHub + Home Assistant
 
-## After bootstrap
+## After bootstrap (manual steps)
 
-Create `~/.env.secrets` (never commit this):
+**1. Add secrets file** (never commit this):
 
 ```bash
+cat > ~/.env.secrets <<'EOF'
 export GEMINI_API_KEY=...
 export HASS_SERVER=http://192.168.1.63:8123
 export HASS_TOKEN=...
+EOF
 ```
 
-Sign in to: Firefox, VS Code, OrbStack.
+**2. Copy Home Assistant SSH key from old machine:**
+
+```bash
+scp ~/.ssh/ha_key user@oldmachine:~/.ssh/ha_key
+scp ~/.ssh/ha_key.pub user@oldmachine:~/.ssh/ha_key.pub
+chmod 600 ~/.ssh/ha_key
+```
+
+**3. Add new SSH public key to GitHub:**
+
+```bash
+pbcopy < ~/.ssh/id_ed25519.pub
+# Then visit: https://github.com/settings/ssh/new
+```
+
+**4. Sign in to:** Firefox, OrbStack
 
 ## Structure
 
 ```
-bootstrap.sh          # run once on a new machine
-install.sh            # symlinks home/* into ~/
-macos.sh              # macOS system defaults
-ssh.sh                # SSH key + config setup
-Brewfile              # all packages
+bootstrap.sh              # run once on a new machine
+install.sh                # symlinks home/* into ~/
+macos.sh                  # macOS system defaults
+ssh.sh                    # SSH key + config setup
+Brewfile                  # all packages
 home/
   .zshrc
   .zprofile
   .gitconfig
-  .gitconfig-personal  # personal identity for ~/Projects/code/keyjm/
+  .gitconfig-personal     # personal identity for ~/Projects/code/keyjm/
   .gitignore
   .p10k.zsh
+  .claude/
+    settings.json         # Claude Code plugins (no secrets)
 ```
 
 ## Git identity
