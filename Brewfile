@@ -59,8 +59,6 @@ cask "kdiff3"
 cask "openmtp"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Open-source code editor
-cask "visual-studio-code"
 npm "@anthropic-ai/claude-code"
 npm "agent-browser"
 npm "clawhub"

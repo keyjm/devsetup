@@ -19,16 +19,31 @@ echo ""
 echo "==> Writing ~/.ssh/config..."
 mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
+touch "$HOME/.ssh/config"
+chmod 600 "$HOME/.ssh/config"
 
-cat > "$HOME/.ssh/config" <<'EOF'
-Host github.com
+add_ssh_block() {
+  local host="$1" block="$2"
+  if ! grep -q "Host $host" "$HOME/.ssh/config"; then
+    echo "" >> "$HOME/.ssh/config"
+    echo "$block" >> "$HOME/.ssh/config"
+    echo "  added: Host $host"
+  else
+    echo "  already present: Host $host"
+  fi
+}
+
+add_ssh_block "github.com" "Host github.com
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_ed25519
-  AddKeysToAgent yes
-EOF
+  AddKeysToAgent yes"
 
-chmod 600 "$HOME/.ssh/config"
+add_ssh_block "homeassistant" "Host homeassistant
+  HostName 192.168.1.63
+  User hassio
+  IdentityFile ~/.ssh/ha_key
+  StrictHostKeyChecking no"
 
 echo ""
 echo "==> Adding key to ssh-agent..."
