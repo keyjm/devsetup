@@ -36,13 +36,6 @@ else
 fi
 
 echo ""
-echo "==> Trusting third-party taps..."
-brew tap antoniorodr/memo   2>/dev/null || true
-brew tap cardpointers/tap   2>/dev/null || true
-brew tap steipete/tap       2>/dev/null || true
-brew tap supabase/tap       2>/dev/null || true
-
-echo ""
 echo "==> Installing from Brewfile..."
 brew bundle --file="$HOME/dotfiles/Brewfile"
 
@@ -72,10 +65,6 @@ nvm install 22.14.0
 nvm install 26.1.0
 nvm alias default 26.1.0
 nvm use default
-
-echo ""
-echo "==> Installing npm globals..."
-npm install -g @anthropic-ai/claude-code agent-browser clawhub happy openclaw
 
 echo ""
 echo "==> Installing Claude Code settings..."
@@ -116,6 +105,7 @@ echo "Bootstrap complete!"
 echo ""
 echo "Manual steps remaining:"
 echo "  1. Create ~/.env.secrets:"
+echo "       export ANTHROPIC_API_KEY=..."
 echo "       export GEMINI_API_KEY=..."
 echo "       export HASS_SERVER=http://192.168.1.63:8123"
 echo "       export HASS_TOKEN=..."
