@@ -49,20 +49,76 @@ brew "uv"
 brew "virt-manager"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# Flash OS images to SD cards & USB drives
+cask "balenaetcher"
+# Password manager
+cask "bitwarden"
+# Block's open-source AI coding agent
+cask "block-goose"
 # OpenAI ChatGPT desktop app
 cask "chatgpt"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
+# Perplexity AI desktop app
+cask "comet"
+# AI code editor
+cask "cursor"
+# Voice and text chat
+cask "discord"
+# Data recovery tool
+cask "disk-drill"
 # Web browser
 cask "firefox"
+# JetBrains Fleet IDE
+cask "fleet"
+# Google Gemini desktop app
+cask "google-gemini"
+# GitHub Desktop
+cask "github"
+# Web browser
+cask "google-chrome"
+# Google Drive file sync
+cask "google-drive"
 # Terminal emulator
 cask "iterm2"
+# Download manager
+cask "jdownloader"
+# File archiver
+cask "keka"
 # Utility for comparing and merging files and directories
 cask "kdiff3"
+# IntelliJ IDEA Ultimate
+cask "intellij-idea"
+# VPN client
+cask "nordvpn"
 # Android file transfer
 cask "openmtp"
 # Replacement for Docker Desktop
 cask "orbstack"
+# WebKit browser
+cask "orion"
+# API platform
+cask "postman"
+# VPN client
+cask "protonvpn"
+# Bookmark manager
+cask "raindropio"
+# Window management
+cask "rectangle"
+# SEO crawler
+cask "screaming-frog-seo-spider"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# VPN client
+cask "surfshark"
+# Telegram messaging
+cask "telegram"
+# WhatsApp messaging
+cask "whatsapp"
+# Microsoft Remote Desktop
+cask "windows-app"
+# YouTube Music player
+cask "yt-music"
+# Video conferencing
+cask "zoom"
 npm "@anthropic-ai/claude-code"
 npm "agent-browser"
 npm "clawhub"
