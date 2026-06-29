@@ -49,10 +49,14 @@ brew "uv"
 brew "virt-manager"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# OpenAI ChatGPT desktop app
+cask "chatgpt"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Web browser
 cask "firefox"
+# Terminal emulator
+cask "iterm2"
 # Utility for comparing and merging files and directories
 cask "kdiff3"
 # Android file transfer
