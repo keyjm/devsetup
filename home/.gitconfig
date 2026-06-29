@@ -1,6 +1,8 @@
 [user]
 	name = Kunal Malviya
-	email = kj.malviya@gmail.com
+	email = kunalmalviya@hotmail.com
+[includeIf "gitdir:~/Projects/code/keyjm/"]
+	path = ~/.gitconfig-personal
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
