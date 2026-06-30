@@ -46,6 +46,12 @@ add_ssh_block "homeassistant" "Host homeassistant
   StrictHostKeyChecking no"
 
 echo ""
+echo "==> Adding github.com to known_hosts..."
+mkdir -p "$HOME/.ssh"
+ssh-keyscan github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
+echo "  done"
+
+echo ""
 echo "==> Adding key to ssh-agent..."
 eval "$(ssh-agent -s)" > /dev/null
 ssh-add --apple-use-keychain "$KEY" 2>/dev/null || ssh-add "$KEY"
