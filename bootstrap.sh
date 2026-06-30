@@ -41,16 +41,16 @@ fi
 
 echo ""
 echo "==> Cloning dotfiles..."
-if [ ! -d "$HOME/dotfiles" ]; then
-  git clone https://github.com/keyjm/devsetup.git "$HOME/dotfiles"
+if [ ! -d "$HOME/devsetup" ]; then
+  git clone https://github.com/keyjm/devsetup.git "$HOME/devsetup"
 else
   echo "  already cloned, pulling..."
-  git -C "$HOME/dotfiles" pull
+  git -C "$HOME/devsetup" pull
 fi
 
 echo ""
 echo "==> Installing from Brewfile..."
-brew bundle --file="$HOME/dotfiles/Brewfile"
+brew bundle --file="$HOME/devsetup/Brewfile"
 
 echo ""
 echo "==> Installing oh-my-zsh..."
@@ -69,7 +69,7 @@ echo "  linked"
 
 echo ""
 echo "==> Symlinking dotfiles..."
-bash "$HOME/dotfiles/install.sh"
+bash "$HOME/devsetup/install.sh"
 
 echo ""
 echo "==> Installing Python versions via pyenv..."
@@ -94,7 +94,7 @@ echo ""
 echo "==> Installing Claude Code settings..."
 mkdir -p "$HOME/.claude"
 if [ ! -f "$HOME/.claude/settings.json" ]; then
-  cp "$HOME/dotfiles/home/.claude/settings.json" "$HOME/.claude/settings.json"
+  cp "$HOME/devsetup/home/.claude/settings.json" "$HOME/.claude/settings.json"
   echo "  installed: ~/.claude/settings.json"
 else
   echo "  already exists: ~/.claude/settings.json — skipping"
@@ -110,18 +110,18 @@ fi
 
 echo ""
 echo "==> Setting up iTerm2 preferences..."
-ITERM_PREFS="$HOME/dotfiles/home/iterm2"
+ITERM_PREFS="$HOME/devsetup/home/iterm2"
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$ITERM_PREFS"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 echo "  iTerm2 will load prefs from: $ITERM_PREFS"
 
 echo ""
 echo "==> Applying macOS defaults..."
-bash "$HOME/dotfiles/macos.sh"
+bash "$HOME/devsetup/macos.sh"
 
 echo ""
 echo "==> Setting up SSH..."
-bash "$HOME/dotfiles/ssh.sh"
+bash "$HOME/devsetup/ssh.sh"
 
 echo ""
 echo "============================================"

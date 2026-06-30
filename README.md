@@ -14,7 +14,7 @@ It will open the Xcode CLI tools installer dialog and pause until you confirm it
 
 This will:
 1. Install Xcode CLI tools + Homebrew
-2. Clone this repo to `~/dotfiles`
+2. Clone this repo to `~/devsetup`
 3. Install everything in `Brewfile` (brew, cask, fonts, npm)
 4. Install oh-my-zsh
 5. Symlink dotfiles from `home/` into `~/`
