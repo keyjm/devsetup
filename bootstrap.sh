@@ -80,6 +80,10 @@ nvm alias default 26.1.0
 nvm use default
 
 echo ""
+echo "==> Installing npm globals..."
+npm install -g @anthropic-ai/claude-code agent-browser clawhub happy openclaw
+
+echo ""
 echo "==> Installing Claude Code settings..."
 mkdir -p "$HOME/.claude"
 if [ ! -f "$HOME/.claude/settings.json" ]; then

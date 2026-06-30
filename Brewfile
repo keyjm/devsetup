@@ -121,8 +121,3 @@ cask "windows-app"
 cask "yt-music"
 # Video conferencing
 cask "zoom"
-npm "@anthropic-ai/claude-code"
-npm "agent-browser"
-npm "clawhub"
-npm "happy"
-npm "openclaw"
