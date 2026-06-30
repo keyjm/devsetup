@@ -7,7 +7,7 @@ Mac dev environment — dotfiles, Brewfile, and bootstrap scripts.
 Open Terminal and run the bootstrap script — it handles everything including Xcode CLI tools:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/macsetup/main/bootstrap.sh)"
 ```
 
 It will open the Xcode CLI tools installer dialog and pause until you confirm it's done before continuing.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bootstrap a new Mac from scratch.
-# Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
+# Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/macsetup/main/bootstrap.sh)"
 set -e
 
 REPO_DIR="$HOME/Projects/code/keyjm/macsetup"
@@ -45,7 +45,7 @@ echo ""
 echo "==> Cloning dotfiles..."
 if [ ! -d "$REPO_DIR" ]; then
   mkdir -p "$(dirname "$REPO_DIR")"
-  git clone https://github.com/keyjm/devsetup.git "$REPO_DIR"
+  git clone https://github.com/keyjm/macsetup.git "$REPO_DIR"
 else
   echo "  already cloned, pulling..."
   git -C "$REPO_DIR" pull
