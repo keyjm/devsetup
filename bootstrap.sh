@@ -61,6 +61,13 @@ else
 fi
 
 echo ""
+echo "==> Linking powerlevel10k theme into oh-my-zsh..."
+mkdir -p "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+ln -sf /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme \
+  "$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
+echo "  linked"
+
+echo ""
 echo "==> Symlinking dotfiles..."
 bash "$HOME/dotfiles/install.sh"
 
