@@ -48,8 +48,20 @@ add_ssh_block "homeassistant" "Host homeassistant
 echo ""
 echo "==> Adding github.com to known_hosts..."
 mkdir -p "$HOME/.ssh"
-ssh-keyscan github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
-echo "  done"
+KEYSCAN=$(ssh-keyscan -t ed25519 github.com 2>/dev/null)
+# Verify against GitHub's published Ed25519 fingerprint
+# https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+FINGERPRINT=$(echo "$KEYSCAN" | ssh-keygen -lf - 2>/dev/null | awk '{print $2}')
+EXPECTED="SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU"
+if [ "$FINGERPRINT" = "$EXPECTED" ]; then
+  echo "$KEYSCAN" >> "$HOME/.ssh/known_hosts"
+  echo "  verified and added"
+else
+  echo "ERROR: github.com host key fingerprint mismatch!"
+  echo "  got:      $FINGERPRINT"
+  echo "  expected: $EXPECTED"
+  exit 1
+fi
 
 echo ""
 echo "==> Adding key to ssh-agent..."
