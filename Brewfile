@@ -1,5 +1,4 @@
 tap "antoniorodr/memo"
-tap "homebrew/cask-fonts"
 tap "cardpointers/tap"
 tap "github/gh"
 tap "steipete/tap"
@@ -68,8 +67,6 @@ cask "discord"
 cask "disk-drill"
 # Web browser
 cask "firefox"
-# JetBrains Fleet IDE
-cask "fleet"
 # Google Gemini desktop app
 cask "google-gemini"
 # GitHub Desktop
