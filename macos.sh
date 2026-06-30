@@ -33,6 +33,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false     # enable 
 # ── Trackpad ──────────────────────────────────────────────────────────────────
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1       # tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
 
 # ── Misc ──────────────────────────────────────────────────────────────────────
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
