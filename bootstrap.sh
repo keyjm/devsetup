@@ -3,6 +3,8 @@
 # Run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/keyjm/devsetup/main/bootstrap.sh)"
 set -e
 
+REPO_DIR="$HOME/Projects/code/keyjm/macsetup"
+
 echo "==> Installing Rosetta 2 (Apple Silicon)..."
 if [[ $(uname -m) == "arm64" ]]; then
   if /usr/bin/pgrep -q oahd 2>/dev/null; then
@@ -41,16 +43,17 @@ fi
 
 echo ""
 echo "==> Cloning dotfiles..."
-if [ ! -d "$HOME/devsetup" ]; then
-  git clone https://github.com/keyjm/devsetup.git "$HOME/devsetup"
+if [ ! -d "$REPO_DIR" ]; then
+  mkdir -p "$(dirname "$REPO_DIR")"
+  git clone https://github.com/keyjm/devsetup.git "$REPO_DIR"
 else
   echo "  already cloned, pulling..."
-  git -C "$HOME/devsetup" pull
+  git -C "$REPO_DIR" pull
 fi
 
 echo ""
 echo "==> Installing from Brewfile..."
-brew bundle --file="$HOME/devsetup/Brewfile"
+brew bundle --file="$REPO_DIR/Brewfile"
 
 echo ""
 echo "==> Installing oh-my-zsh..."
@@ -69,7 +72,7 @@ echo "  linked"
 
 echo ""
 echo "==> Symlinking dotfiles..."
-bash "$HOME/devsetup/install.sh"
+bash "$REPO_DIR/install.sh"
 
 echo ""
 echo "==> Installing Python versions via pyenv..."
@@ -94,7 +97,7 @@ echo ""
 echo "==> Installing Claude Code settings..."
 mkdir -p "$HOME/.claude"
 if [ ! -f "$HOME/.claude/settings.json" ]; then
-  cp "$HOME/devsetup/home/.claude/settings.json" "$HOME/.claude/settings.json"
+  cp "$REPO_DIR/home/.claude/settings.json" "$HOME/.claude/settings.json"
   echo "  installed: ~/.claude/settings.json"
 else
   echo "  already exists: ~/.claude/settings.json — skipping"
@@ -110,18 +113,18 @@ fi
 
 echo ""
 echo "==> Setting up iTerm2 preferences..."
-ITERM_PREFS="$HOME/devsetup/home/iterm2"
+ITERM_PREFS="$REPO_DIR/home/iterm2"
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$ITERM_PREFS"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 echo "  iTerm2 will load prefs from: $ITERM_PREFS"
 
 echo ""
 echo "==> Applying macOS defaults..."
-bash "$HOME/devsetup/macos.sh"
+bash "$REPO_DIR/macos.sh"
 
 echo ""
 echo "==> Setting up SSH..."
-bash "$HOME/devsetup/ssh.sh"
+bash "$REPO_DIR/ssh.sh"
 
 echo ""
 echo "============================================"
